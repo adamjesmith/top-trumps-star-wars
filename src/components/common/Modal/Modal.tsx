@@ -1,0 +1,114 @@
+import cn from 'clsx';
+import Image from 'next/image';
+
+import s from './Modal.module.css';
+
+import { shuffle } from '@/lib/utils/shuffle';
+import {
+  useComputerScore,
+  usePlayable,
+  usePlayerScore,
+  useResetScores,
+  useResult,
+  useSetHidden,
+  useSetPlayable,
+  useSetResult,
+  useStarships,
+} from '@/lib/utils/zustand';
+
+export default function Modal() {
+  const computerScore = useComputerScore();
+  const playable = usePlayable();
+  const playerScore = usePlayerScore();
+  const result = useResult();
+  const starships = useStarships();
+  const setHidden = useSetHidden();
+  const setPlayable = useSetPlayable();
+  const setResult = useSetResult();
+  const resetScores = useResetScores();
+
+  function playAgain() {
+    playable.splice(0, 2);
+    setResult(null);
+    setHidden(true);
+    setPlayable(playable);
+  }
+
+  function reset() {
+    setResult(null);
+    setHidden(true);
+    setPlayable(shuffle(starships));
+    resetScores();
+  }
+
+  return (
+    <div className={s.root}>
+      <div className={s.modal}>
+        <div className={s.image}>
+          {result === 'win' ? (
+            <Image
+              src='/images/obi-wan.jpg'
+              alt='Stars'
+              height={500}
+              width={400}
+            />
+          ) : result === 'lose' ? (
+            <Image
+              src='/images/vader.jpg'
+              alt='Stars'
+              height={500}
+              width={400}
+            />
+          ) : (
+            <Image
+              src='/images/yoda.jpg'
+              alt='Stars'
+              height={500}
+              width={400}
+            />
+          )}
+        </div>
+
+        <div className={s.textContain}>
+          {playable.length == 2 ? (
+            <>
+              <h3 className={s.title}>Game Over</h3>
+              <p className={s.message}>
+                Final score {playerScore} - {computerScore}
+              </p>
+            </>
+          ) : result === 'win' ? (
+            <>
+              <h3 className={s.title}>You Win!</h3>
+              <p className={s.message}>You must have used the force</p>
+            </>
+          ) : result === 'lose' ? (
+            <>
+              <h3 className={s.title}>You Lose!</h3>
+              <p className={s.message}>Join the darkside!!!</p>
+            </>
+          ) : (
+            <>
+              <h3 className={s.title}>Draw</h3>
+              <p className={s.message}>Play again, you must...</p>
+            </>
+          )}
+
+          {playable.length == 2 ? (
+            <button onClick={() => reset()} className={cn(s.button, s.reset)}>
+              Play Again
+            </button>
+          ) : (
+            <button
+              onClick={() => playAgain()}
+              className={cn(s.button, s.again)}
+            >
+              Next Hand
+            </button>
+          )}
+        </div>
+      </div>
+      <div className={s.overlay}></div>
+    </div>
+  );
+}
