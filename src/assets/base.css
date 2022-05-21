@@ -16,10 +16,7 @@
   --purple: #f81ce5;
   --blue: #0070f3;
   --pink: #ff0080;
-  --pink-light: #ff379c;
-  --magenta: #eb367f;
-  --violet: #7928ca;
-  --violet-dark: #4c2889;
+  --orange: #ffc625;
   --accent-0: #fff;
   --accent-1: #fafafa;
   --accent-2: #eaeaea;
@@ -30,8 +27,8 @@
   --accent-7: #222222;
   --accent-8: #111111;
   --accent-9: #000;
-  --font-montserat: 'montserrat', system-ui, BlinkMacSystemFont,
-    'Helvetica Neue', 'Helvetica', sans-serif;
+  --font-poppins: 'Poppins', system-ui, BlinkMacSystemFont, 'Helvetica Neue',
+    'Helvetica', sans-serif;
 }
 
 [data-theme='dark'] {
@@ -69,7 +66,7 @@ body {
   height: 100%;
   box-sizing: border-box;
   touch-action: manipulation;
-  font-family: var(--font-montserat);
+  font-family: var(--font-poppins);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -86,40 +83,4 @@ body {
 
 a {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-
-.animated {
-  animation-duration: 1s;
-  animation-fill-mode: both;
-  -webkit-animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-}
-
-.fadeIn {
-  animation-name: fadeIn;
-  -webkit-animation-name: fadeIn;
-}
-
-.titleLine {
-  display: block;
-}
-
-@-webkit-keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
 }

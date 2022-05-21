@@ -1,0 +1,46 @@
+.root {
+  @apply fixed z-30 flex h-screen w-screen items-center justify-center;
+}
+
+.overlay {
+  @apply absolute z-10 h-full w-full bg-black opacity-50;
+}
+
+.modal {
+  @apply z-20 flex flex-col bg-white;
+}
+
+.image {
+  @apply flex;
+}
+
+.textContain {
+  @apply p-4;
+}
+
+.button {
+  @apply rounded-lg px-4 py-2 text-white;
+}
+
+.message {
+  @apply mb-8;
+}
+
+.again {
+  @apply bg-green;
+}
+
+.reset {
+  @apply bg-red;
+}
+
+@screen lg {
+  .modal {
+    @apply flex-row;
+  }
+
+  .textContain {
+    @apply flex flex-col items-center justify-center p-8 text-center;
+    min-width: 360px;
+  }
+}
