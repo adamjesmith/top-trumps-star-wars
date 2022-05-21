@@ -41,32 +41,32 @@ export default function Modal() {
     resetScores();
   }
 
+  const title =
+    result === 'win' ? 'You Win!' : result === 'lose' ? 'You Lose!' : 'Draw';
+  const message =
+    result === 'win'
+      ? 'You must have used the force'
+      : result === 'lose'
+      ? 'Join the darkside!!!'
+      : 'Play again, you must...';
+
   return (
     <div className={s.root}>
       <div className={s.modal}>
         <div className={s.image}>
-          {result === 'win' ? (
-            <Image
-              src='/images/obi-wan.jpg'
-              alt='Stars'
-              height={500}
-              width={400}
-            />
-          ) : result === 'lose' ? (
-            <Image
-              src='/images/vader.jpg'
-              alt='Stars'
-              height={500}
-              width={400}
-            />
-          ) : (
-            <Image
-              src='/images/yoda.jpg'
-              alt='Stars'
-              height={500}
-              width={400}
-            />
-          )}
+          <Image
+            src={
+              result === 'win'
+                ? '/images/obi-wan.jpg'
+                : result === 'lose'
+                ? '/images/vader.jpg'
+                : '/images/yoda.jpg'
+            }
+            alt='Modal Image'
+            height={500}
+            width={400}
+            priority={true}
+          />
         </div>
 
         <div className={s.textContain}>
@@ -76,35 +76,21 @@ export default function Modal() {
               <p className={s.message}>
                 Final score {playerScore} - {computerScore}
               </p>
-            </>
-          ) : result === 'win' ? (
-            <>
-              <h3 className={s.title}>You Win!</h3>
-              <p className={s.message}>You must have used the force</p>
-            </>
-          ) : result === 'lose' ? (
-            <>
-              <h3 className={s.title}>You Lose!</h3>
-              <p className={s.message}>Join the darkside!!!</p>
+              <button onClick={() => reset()} className={cn(s.button, s.reset)}>
+                Play Again
+              </button>
             </>
           ) : (
             <>
-              <h3 className={s.title}>Draw</h3>
-              <p className={s.message}>Play again, you must...</p>
+              <h3 className={s.title}> {title} </h3>
+              <p className={s.message}>{message}</p>
+              <button
+                onClick={() => playAgain()}
+                className={cn(s.button, s.again)}
+              >
+                Next Hand
+              </button>
             </>
-          )}
-
-          {playable.length == 2 ? (
-            <button onClick={() => reset()} className={cn(s.button, s.reset)}>
-              Play Again
-            </button>
-          ) : (
-            <button
-              onClick={() => playAgain()}
-              className={cn(s.button, s.again)}
-            >
-              Next Hand
-            </button>
           )}
         </div>
       </div>
