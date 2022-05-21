@@ -1,0 +1,13 @@
+.fit {
+  min-height: calc(100vh - 88px);
+}
+
+.swiper-pagination {
+  @apply absolute right-1 top-3/4 z-20 flex flex-col;
+}
+
+@screen lg {
+  .swiper-pagination {
+    @apply top-auto bottom-1 right-auto left-1 flex flex-row;
+  }
+}
