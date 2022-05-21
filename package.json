@@ -1,6 +1,6 @@
 {
-  "name": "top-trumps-star-wars",
-  "version": "1.0.0",
+  "name": "star-wars-top-trumps",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -14,11 +14,14 @@
     "format:check": "prettier -c .",
     "release": "standard-version",
     "push-release": "git push --follow-tags origin main",
-    "postbuild": "next-sitemap"
+    "postbuild": "next-sitemap",
+    "graphql:codegen": "graphql-codegen - config graphql-codegen.yml"
   },
   "dependencies": {
+    "@apollo/client": "^3.6.4",
     "body-scroll-lock": "^3.1.5",
     "clsx": "^1.1.1",
+    "graphql": "^16.5.0",
     "next": "^12.1.0",
     "next-themes": "^0.0.14",
     "react": "^17.0.2",
@@ -26,21 +29,26 @@
     "react-icons": "^4.3.1",
     "react-merge-refs": "^1.1.0",
     "swiper": "^8.1.4",
-    "tailwind-merge": "^1.2.0"
+    "tailwind-merge": "^1.2.0",
+    "zustand": "^4.0.0-rc.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^13.2.1",
     "@commitlint/config-conventional": "^13.2.0",
+    "@graphql-codegen/cli": "^2.6.2",
+    "@graphql-codegen/fragment-matcher": "^3.2.1",
+    "@graphql-codegen/typescript": "^2.4.11",
+    "@graphql-codegen/typescript-operations": "^2.4.0",
+    "@graphql-codegen/typescript-react-apollo": "^3.2.14",
     "@svgr/webpack": "^6.2.1",
     "@tailwindcss/forms": "^0.4.1",
-    "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
     "@types/body-scroll-lock": "^2.6.1",
     "@types/react": "^17.0.40",
     "@types/tailwindcss": "^2.2.4",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.33.0",
-    "autoprefixer": "^10.4.4",
+    "autoprefixer": "^10.4.5",
     "dotenv": "^16.0.0",
     "eslint": "^7.32.0",
     "eslint-config-next": "^11.1.4",
