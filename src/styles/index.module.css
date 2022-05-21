@@ -1,0 +1,41 @@
+.root {
+  @apply relative h-full min-h-screen w-full;
+}
+
+.image {
+  @apply absolute z-10;
+}
+
+.container {
+  @apply relative z-20 grid grid-cols-1 justify-items-center px-8 py-4;
+}
+
+.col {
+  @apply flex w-full flex-col items-center;
+}
+
+.score {
+  @apply mb-4 w-full text-center;
+}
+
+.card:nth-of-type(2) {
+  @apply mb-16;
+}
+
+@screen lg {
+  .container {
+    @apply grid-cols-2 grid-rows-1;
+  }
+
+  .col:first-of-type .score {
+    @apply text-left;
+  }
+
+  .col:last-of-type .score {
+    @apply text-right;
+  }
+
+  .card:nth-of-type(2) {
+    @apply mb-0;
+  }
+}
